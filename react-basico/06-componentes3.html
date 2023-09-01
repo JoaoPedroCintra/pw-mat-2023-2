@@ -7,6 +7,7 @@
   <style>
     .soma {
       border-radius: 8px;
+<<<<<<< HEAD
       border: 2px solid royalblue;
       padding: 8px;
       margin: 8px;
@@ -22,6 +23,20 @@
         background-color:tan;
     }
 
+=======
+      border: 3px solid royalblue;
+      padding: 8px;
+      margin: 8px;
+    }
+    .direita {
+      text-align: right;
+      background-color: lightgreen;
+    }
+    .centro {
+      text-align: center;
+      background-color: tan;
+    }
+>>>>>>> f9a1f3ec38105d3fbbab29b34a886cde47b5eb29
   </style>
 </head>
 <body>
@@ -34,6 +49,7 @@
 
   <script type="text/babel">
 
+<<<<<<< HEAD
     //COMPONENTE QUE EXIBE A SOMA DE DOIS NUMEROS
     // Aqui, temos um caso em que props personalziadas e genéricas
     // são usadas ao msm tempo
@@ -64,6 +80,41 @@
             Texto à direita
         </ParagDireita>
     </>
+=======
+    // COMPONENTE QUE EXIBE A SOMA DE DOIS NÚMEROS
+    // Aqui, temos um caso em que props personalizadas e genéricas
+    // são usadas ao mesmo tempo
+    function Soma({num1, num2, ...props}) {
+      return <div className="soma" {...props}>
+        A soma de {num1} e {num2} é {num1 + num2}
+      </div>
+    }
+
+    // Componente que recebe apenas props genéricas
+    function ParagCentro(props) {
+      return <p className="centro" {...props} />
+    }
+
+    // Componente que recebe apenas props personalizadas
+    function ParagDireita({id, children}) {
+      return <p className="direita" id={id}> {children} </p>
+    }
+
+    const container =
+      <>
+        { /* Props cujo valor NÃO É string devem ser passadas entre {} */ }
+        <Soma id="soma1" title="Exemplo de soma" teste="Teste" num1={25} num2={19} />
+
+        <ParagCentro id="parag1" title="centralizado" seila="não sei">
+          Texto centralizado
+        </ParagCentro>
+
+        <ParagDireita id="parag2" title="à direita" seila="não sei">
+          Texto à direita
+        </ParagDireita>
+      </>
+
+>>>>>>> f9a1f3ec38105d3fbbab29b34a886cde47b5eb29
     const root = ReactDOM.createRoot(document.getElementById('root'))
     root.render(container)
   </script>
