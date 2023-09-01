@@ -7,23 +7,6 @@
   <style>
     .soma {
       border-radius: 8px;
-<<<<<<< HEAD
-      border: 2px solid royalblue;
-      padding: 8px;
-      margin: 8px;
-    }
-
-    .direita{
-        text-align: right;
-        background-color: lightgreen;
-    }
-
-    .centro{
-        text-align: center;
-        background-color:tan;
-    }
-
-=======
       border: 3px solid royalblue;
       padding: 8px;
       margin: 8px;
@@ -36,7 +19,7 @@
       text-align: center;
       background-color: tan;
     }
->>>>>>> f9a1f3ec38105d3fbbab29b34a886cde47b5eb29
+
   </style>
 </head>
 <body>
@@ -49,38 +32,6 @@
 
   <script type="text/babel">
 
-<<<<<<< HEAD
-    //COMPONENTE QUE EXIBE A SOMA DE DOIS NUMEROS
-    // Aqui, temos um caso em que props personalziadas e genéricas
-    // são usadas ao msm tempo
-    function Soma({num1,num2,...props}){
-        return<div classNmae="soma" {...props}> A soma de {num1} e {num2} é {num1+num2} </div>
-    }
-
-    //Componente que recebe apenas props genéricas
-    function ParagCentro(props){
-        return <p className="centro" {...props}></p>
-    }
-
-    //Componentes que recebem props personalizadas
-    function ParagDireita({id,children}){
-        return <p className="direita" id={id} children = {children}></p>
-    }
-    
-    const container =
-    <>
-        {/*props cujo valor NÃO É string devem ser passadas entre chaves {}*/}
-        <Soma  id="soma1" title="Exemplo de soma" num1={25} num2={19}/>
-
-        <ParagCentro id="parag1" title="centralizado" sla="Não sei">
-            Texto Centralizado
-        </ParagCentro>
-
-        <ParagDireita id="parag2" title="à direita" sla="Não sei">
-            Texto à direita
-        </ParagDireita>
-    </>
-=======
     // COMPONENTE QUE EXIBE A SOMA DE DOIS NÚMEROS
     // Aqui, temos um caso em que props personalizadas e genéricas
     // são usadas ao mesmo tempo
@@ -114,7 +65,6 @@
         </ParagDireita>
       </>
 
->>>>>>> f9a1f3ec38105d3fbbab29b34a886cde47b5eb29
     const root = ReactDOM.createRoot(document.getElementById('root'))
     root.render(container)
   </script>
