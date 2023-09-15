@@ -33,40 +33,21 @@
     */
 
   function Form(){
-      const n1Ref = React.useRef()
-      const n2Ref = React.useRef()
-      const resultRef = React.useRef()
-      
-      let valor,cotacao,convertido
-
-      function handleChange(event){
-          valor = Number(n1Ref.current.value)
-          cotacao = Number(n2Ref.current.value)
-          // resultRef.current.textContent = "Resultado Conversão:" + Number(valor/cotacao) 
-          convertido = valor/cotacao
-        
-        // Exibe o resultado formatado
-        resultRef.current.textContent = convertido.toLocaleString(
-          //usa as convenções de separador de milhar e decimal
-          //da lingua inglesa. Português do Brasil é pt-BR
-          'en-US',
-          // USD ~> Dólar americano ($). Real brasileiro é BRL
-          {style: 'currency', currency: 'USD'}
-        )
-      }
+    const [valor,setValor] = React.useState()
+    const [cotacao,setCotacao] = React.useState()
 
       return(<>
           <h1>Conversão Real para Dólar</h1>
             <form>
                 <div>
                     <label>Valor em Reais:</label>
-                    <input  type="number" ref={n1Ref} onChange={handleChange} />
+                    <input  type="number" onChange={ event => setValor(event.target.value)} value={valor} />
                 </div>
                 <div>
                     <label>Cotação em Dólar:</label>
-                    <input type="number" ref = {n2Ref} onChange={handleChange}/>
+                    <input type="number" onChange={ event => setCotacao(event.target.value)}value={cotacao}/>
                 </div>
-                <div ref={resultRef}> </div>
+                <div> {valor/cotacao}</div>
             </form>
           </>
           )
