@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cálculo da área de uma elipse</title>
+</head>
+<body>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <div id="root"></div>
+    <script type="text/babel">
+        //inicializando Componente
+        function Form(){
+            //inicializando variáveis de estado com o hook useState
+            let [raioMenor,setMenor] = React.useState()
+            let [raioMaior,setMaior] = React.useState()
+            let area = raioMaior*raioMenor* Math.PI
+            let resultado;
+          
+            //Criando visual Html do Componente e suas funções
+            return(<>
+                    <h1>Cálculo da área de uma elipse</h1>
+                <form>
+                    <div>
+                    <label>
+                        <span>Medida do raio maior:</span>
+                        <input type="number" onChange= {event => setMaior(event.target.value)} value={raioMaior}/>
+                    </label>
+                    </div>
+                    <div>
+                    <label>
+                        <span>Medida do raio menor:</span>
+                        <input type="number" onChange= {event => setMenor(event.target.value)} value={raioMenor}/>
+                    </label>
+                    </div>
+
+                  {/*Imprimindo valores e Formatando casas decimais*/}
+                    <div>{resultado = area.toLocaleString('pt-br', { 
+                            minimumFractionDigits: 4, 
+                            maximumFractionDigits: 4 })} 
+                    </div>
+                </form>
+            </>)   
+
+    }
+    
+    const container = 
+    <>
+        <Form/>
+    </>
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(container)
+  </script>
+</body>
+</html>
