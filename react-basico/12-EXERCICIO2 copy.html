@@ -33,8 +33,12 @@
     */
 
   function Form(){
+    //Declarando variáveis de estado para os inputs
     const [valor,setValor] = React.useState()
     const [cotacao,setCotacao] = React.useState()
+
+    //ESTADO CALCULADO
+    let convertido = Number(valor)/Number(cotacao)
 
       return(<>
           <h1>Conversão Real para Dólar</h1>
@@ -47,19 +51,19 @@
                     <label>Cotação em Dólar:</label>
                     <input type="number" onChange={ event => setCotacao(event.target.value)}value={cotacao}/>
                 </div>
-                <div> {valor/cotacao}</div>
+                <div> {convertido}</div>
             </form>
           </>
           )
   }
 
-    const container = 
-        <>
-            <Form/>
-        </>
+    // const container = 
+    //     <>
+    //         <Form/>
+    //     </>
 
     const root = ReactDOM.createRoot(document.getElementById('root'))
-    root.render(container)
+    root.render(<Form/>)//container
   </script>
   
 </body>
