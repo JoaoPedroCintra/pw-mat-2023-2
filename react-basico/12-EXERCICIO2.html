@@ -31,27 +31,6 @@
 
       Este exercício contará para a nota de Participação e Assiduidade (PA).
     */
-
-<<<<<<< HEAD
-  function Form(){
-      const n1Ref = React.useRef()
-      const n2Ref = React.useRef()
-      const resultRef = React.useRef()
-      
-      let valor,cotacao,convertido
-
-      function handleChange(event){
-          valor = Number(n1Ref.current.value)
-          cotacao = Number(n2Ref.current.value)
-          // resultRef.current.textContent = "Resultado Conversão:" + Number(valor/cotacao) 
-          convertido = valor/cotacao
-        
-        // Exibe o resultado formatado
-        resultRef.current.textContent = convertido.toLocaleString(
-          //usa as convenções de separador de milhar e decimal
-          //da lingua inglesa. Português do Brasil é pt-BR
-          'en-US',
-=======
     function Form() {
 
       const valReaisRef = React.useRef()
@@ -69,38 +48,11 @@
           // usa as convenções de separador de milhar e decimal
           // da língua inglesa. Português do Brasil é pt-BR
           'en-US',  
->>>>>>> 39f56c4493573072bff588f821550096d3670a7c
           // USD ~> Dólar americano ($). Real brasileiro é BRL
           {style: 'currency', currency: 'USD'}
         )
       }
 
-<<<<<<< HEAD
-      return(<>
-          <h1>Conversão Real para Dólar</h1>
-            <form>
-                <div>
-                    <label>Valor em Reais:</label>
-                    <input  type="number" ref={n1Ref} onChange={handleChange} />
-                </div>
-                <div>
-                    <label>Cotação em Dólar:</label>
-                    <input type="number" ref = {n2Ref} onChange={handleChange}/>
-                </div>
-                <div ref={resultRef}> </div>
-            </form>
-          </>
-          )
-  }
-
-    const container = 
-        <>
-            <Form/>
-        </>
-
-    const root = ReactDOM.createRoot(document.getElementById('root'))
-    root.render(container)
-=======
       return (
         <>
           <h1>Conversor de real para dólar</h1>
@@ -125,8 +77,6 @@
 
     const root = ReactDOM.createRoot(document.getElementById('root'))
     root.render(<Form />)
-
->>>>>>> 39f56c4493573072bff588f821550096d3670a7c
   </script>
   
 </body>
