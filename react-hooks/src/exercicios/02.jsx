@@ -24,6 +24,9 @@ function Greeting({initialName = ''}) {
     () => getInitialName()
   )
 
+  // Controla o tema do componente
+  const [theme, setTheme] = React.useState('lightTheme')
+
   function getInitialName() {
     console.count('Leu localStorage')
     return window.localStorage.getItem('name') ?? initialName
@@ -36,15 +39,32 @@ function Greeting({initialName = ''}) {
     // Armazena o valor atualizado da variável de estado "name"
     // no localStorage
     window.localStorage.setItem('name', name)
-  })
+    console.count('Executou useEffect()')
+  }, [name]) // [] é o VETOR DE DEPENDÊNCIAS do useEffect
+  // Dentro do vetor de dependências, colocamos as variáveis de estado
+  // que, quando forem atualizadas, disparam o useEffect
 
   function handleChange(event) {
     setName(event.target.value)
   }
 
   return (
-    <div>
+    <div className={theme}>
       <form>
+        <fieldset>
+          <legend>Tema</legend>
+          <input 
+            type="radio" 
+            checked={theme === 'lightTheme'}
+            onClick={() => setTheme('lightTheme')}
+          />&nbsp;Claro
+          <br />
+          <input 
+            type="radio" 
+            checked={theme === 'darkTheme'}
+            onClick={() => setTheme('darkTheme')}
+          />&nbsp;Escuro
+        </fieldset>
         <label htmlFor="name">Name: </label>
         <input value={name} onChange={handleChange} id="name" />
       </form>
