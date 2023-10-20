@@ -6,7 +6,7 @@ function Greeting({initialName}) {
   const [name,setName] = React.useState(initialName)
 
   function handleChange(event) {
-    setName(event.targt.value)
+    setName(event.target.value)
   }
 
   return (
