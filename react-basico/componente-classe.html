@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+  
+
+   class FormSoma extends React.Component{
+
+    //Criando variáveis de estado no Construtor e passando seus valores iniciais
+    //O construtor é o primeiro método a ser executada durante a fase de Mounting do Componente
+   
+        constructor(props){
+            super(props)
+            this.state= {
+                num1: 0,
+                num2: 0,
+                soma:0
+            }
+        
+        }
+
+        //logo em seguida o componente é renderizado e então executa o método componentDiMount()
+        //finalziando o cilco de montagem do componente
+        componentDidMount(){
+            console.log("Foi montado")
+        }
+
+        //quando uma prop ou estado de uma variável é alterado ocore uma atualização,
+        //iniciando a fase de atualização
+
+        //função invocada pela prop onChange do input 1
+        handleChange1 = (e) => {
+        //setState() realiza a atualização do estado das variável num1
+            this.setState({ num1: Number(e.target.value) });
+        }
+
+        
+        //função invocada pela prop onChange do input 2
+        handleChange2 = (e) => {
+        //setState() realiza a atualização do estado das variável num2
+            this.setState({num2: Number(e.target.value)});
+        }
+       
+
+        //após a manipulaçao das variáveis atualizadas, o componente é renderizado novamente
+        //depois de renderizado, o método componentDidUpdate é executado,
+        //finalizando o ciclo de atualização
+        componentDidUpdate(prevProps, prevState) {
+            if (prevState.num1 !== this.state.num1 || prevState.num2 !== this.state.num2) {
+                this.soma();
+                console.log("Foi atualizado")
+            }
+           
+        }
+
+
+        soma(){
+            this.setState({
+            soma: isNaN(this.state.num1) || isNaN(this.state.num2) ? '' : this.state.num1 + this.state.num2,
+            });
+           
+        }
+       
+        //nesse código não há um método de desmontagem de componente,
+        //portanto não existe a fase de Unmounting
+
+
+        //o método render é o único método obrigatorio de um componente de classe, onde 
+        //inserimos o elemento html da página que queremos exibir, lembrando que cada 
+        //componente react pode retornar apenas um elemento hmtl, se quisermos mostrar mais 
+        //elementos devemos uní-los em uma div, em um fragment ou algo do tipo.
+        render(){
+            return(
+            <form>
+                <div>
+                    <label htmlFor="num1">Primeiro número:</label><br />
+                    <input  type="number" value={this.state.num1} onChange={this.handleChange1} />
+                </div>
+                <div>
+                    <label htmlFor="num2">Segundo número:</label><br />
+                    <input  type="number" value={this.state.num2} onChange={this.handleChange2}/>
+                </div>
+                <div>Soma: {this.state.soma}</div>
+            </form>
+            )
+        }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<FormSoma/> )
+
+</script>
+
+</body>
+</html>

@@ -32,38 +32,54 @@
       Este exercício contará para a nota de Participação e Assiduidade (PA).
     */
 
-  function Form(){
-    //Declarando variáveis de estado para os inputs
-    const [valor,setValor] = React.useState()
-    const [cotacao,setCotacao] = React.useState()
+    function Form() {
 
-    //ESTADO CALCULADO
-    let convertido = Number(valor)/Number(cotacao)
+      // Declarando variáveis de estado para os inputs
+      const [valReais, setValReais] = React.useState()
+      const [cotDolar, setCotDolar] = React.useState()
 
-      return(<>
-          <h1>Conversão Real para Dólar</h1>
-            <form>
-                <div>
-                    <label>Valor em Reais:</label>
-                    <input  type="number" onChange={ event => setValor(event.target.value)} value={valor} />
-                </div>
-                <div>
-                    <label>Cotação em Dólar:</label>
-                    <input type="number" onChange={ event => setCotacao(event.target.value)}value={cotacao}/>
-                </div>
-                <div> {convertido}</div>
-            </form>
-          </>
-          )
-  }
-
-    // const container = 
-    //     <>
-    //         <Form/>
-    //     </>
+      // ESTADO CALCULADO
+      let convertido = Number(valReais) / Number(cotDolar)
+      
+      return (
+        <>
+          <h1>Conversor de real para dólar</h1>
+          <form>
+            <div>
+              <label>
+                <span>Valor em reais</span><br/>
+                <input value={valReais} 
+                  onChange={event => setValReais(event.target.value)} 
+                  type="number" 
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                <span>Cotação do dólar</span><br/>
+                <input value={cotDolar} 
+                  onChange={event => setCotDolar(event.target.value)} 
+                  type="number" 
+                />
+              </label>
+            </div>
+            <div>{
+              convertido.toLocaleString(
+                // usa as convenções de separador de milhar e decimal
+                // da língua inglesa. Português do Brasil é pt-BR
+                'en-US',  
+                // USD ~> Dólar americano ($). Real brasileiro é BRL
+                {style: 'currency', currency: 'USD'}
+              )
+            }</div>
+          </form>
+        </>
+      )
+    }
 
     const root = ReactDOM.createRoot(document.getElementById('root'))
-    root.render(<Form/>)//container
+    root.render(<Form />)
+
   </script>
   
 </body>
